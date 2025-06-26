@@ -1,9 +1,12 @@
-import LoginPage from "./features/loginPage/loginPage";
-function App() {
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
 
-  return <div>
-    <LoginPage/>
-  </div>;
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;

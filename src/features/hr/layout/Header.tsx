@@ -1,9 +1,20 @@
 import { type FC } from "react";
+import { useNavigate } from "react-router-dom";
+import type { HRProfileData } from "../types/hr.types";
 
-const Header: FC = () => {
+const Header: FC<{ profileInfo: HRProfileData }> = ({ profileInfo }) => {  
+  const navigate = useNavigate();
+  const navigateToHRProfile = () => {
+    navigate(`/hr-profile`, {
+      state: { hr: profileInfo },
+    });
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 h-20 bg-white shadow border-b border-gray-200 px-6 flex items-center justify-between z-50">
-      <h1 className="text-xl font-semibold text-gray-800">Onboarding-Tracker</h1>
+      <h1 className="text-xl font-semibold text-gray-800">
+        Onboarding-Tracker
+      </h1>
       <div className="flex items-center gap-6">
         {/* Search Box */}
         <div className="relative">
@@ -24,12 +35,15 @@ const Header: FC = () => {
           </svg>
         </div>
 
-        {/* Avatar */}
-        <img
-          src="https://i.pravatar.cc/40"
-          alt="Avatar"
-          className="rounded-full w-10 h-10 object-cover"
-        />
+        {/* Avatar with navigation */}
+        <div onClick={navigateToHRProfile} className="cursor-pointer">
+          <img
+            src="https://i.pravatar.cc/40"
+            alt="Avatar"
+            className="rounded-full w-10 h-10 object-cover"
+            title="View Profile"
+          />
+        </div>
       </div>
     </header>
   );
