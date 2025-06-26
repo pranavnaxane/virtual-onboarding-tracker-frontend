@@ -1,12 +1,21 @@
+'use client'; // For Next.js if applicable
+
 import { memo, type FC } from "react";
+import { useSidebar } from "../../../context";
 import type { SidebarLinkProps } from "../types/hr.types";
 
 const Sidebar: FC = () => {
+  const { setSelectedTab, selectedTab } = useSidebar();
+
+  const sideBarClicked = (menuItem: string) => {
+    setSelectedTab(menuItem);
+  };
+
   return (
     <aside className="fixed top-16 left-0 w-64 h-[calc(100vh-64px)] bg-white border-r border-gray-200 shadow-md flex flex-col z-40">
       <nav className="flex-1 px-6 py-5 overflow-y-auto text-gray-800">
-        <SidebarLink label="Home" className="mt-4 mb-2" />
-        <SidebarLink label="Users" />
+        <SidebarLink label="Home" className="mt-4 mb-2" onClick={sideBarClicked} isActive={selectedTab === 'Home'}/>
+        <SidebarLink label="Users" onClick={sideBarClicked} isActive={selectedTab === 'Users'}/>
       </nav>
 
       <div className="border-t border-gray-100 p-3">
@@ -21,12 +30,18 @@ const Sidebar: FC = () => {
   );
 };
 
+// Extend the SidebarLinkProps to accept extra optional props
 interface SidebarLinkPropsExtended extends SidebarLinkProps {
   className?: string;
+  onClick?: (label: string) => void;
 }
 
 const SidebarLink: FC<SidebarLinkPropsExtended> = memo(
-  ({ label, href = "#", isActive = false, className = "" }) => {
+  ({ label, href = "#", isActive = false, className = "", onClick = () => {} }) => {
+    const handleClick = () => {
+      onClick(label);
+    };
+
     return (
       <a
         href={href}
@@ -37,6 +52,7 @@ const SidebarLink: FC<SidebarLinkPropsExtended> = memo(
               : "text-gray-700 hover:bg-blue-50 hover:text-blue-600"
           } ${className}`}
         aria-current={isActive ? "page" : undefined}
+        onClick={handleClick}
       >
         {label}
       </a>
