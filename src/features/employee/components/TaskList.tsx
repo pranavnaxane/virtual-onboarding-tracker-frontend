@@ -50,7 +50,7 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onTaskStatusUpdate })
   };
 
   return (
-    <div className="phoenix-card p-6">
+    <div className="theme-card p-6">
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-xl font-bold text-gray-900">Tasks</h2>

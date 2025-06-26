@@ -44,7 +44,7 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
   };
 
   return (
-    <div className="phoenix-card p-6 h-fit">
+    <div className="theme-card p-6 h-fit">
       <div className="flex justify-between items-start mb-6">
         <h2 className="text-xl font-bold text-gray-900">Profile</h2>
         <button className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">

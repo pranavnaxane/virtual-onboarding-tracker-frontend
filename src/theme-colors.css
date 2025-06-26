@@ -50,20 +50,20 @@
 .border-primary { border-color: var(--primary); }
 .hover\:bg-primary-dark:hover { background-color: var(--primary-dark); }
 
-/* Phoenix-style card shadows */
-.phoenix-card {
+/* Theme-style card shadows */
+.theme-card {
   background: white;
   border-radius: 0.75rem;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   border: 1px solid var(--gray-200);
 }
 
-.phoenix-card:hover {
+.theme-card:hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* Phoenix-style buttons */
-.phoenix-btn-primary {
+/* Theme-style buttons */
+.theme-btn-primary {
   background-color: var(--primary);
   color: white;
   padding: 0.625rem 1.5rem;
@@ -73,20 +73,20 @@
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
-.phoenix-btn-primary:hover {
+.theme-btn-primary:hover {
   background-color: var(--primary-dark);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Phoenix-style progress bars */
-.phoenix-progress-bar {
+/* Theme-style progress bars */
+.theme-progress-bar {
   height: 0.5rem;
   background-color: var(--gray-200);
   border-radius: 0.25rem;
   overflow: hidden;
 }
 
-.phoenix-progress-fill {
+.theme-progress-fill {
   height: 100%;
   border-radius: 0.25rem;
   transition: width 0.3s ease;

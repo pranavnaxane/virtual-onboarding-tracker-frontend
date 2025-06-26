@@ -13,7 +13,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {/* Total Tasks Card */}
-      <div className="phoenix-card p-6 hover:shadow-lg transition-all duration-200">
+      <div className="theme-card p-6 hover:shadow-lg transition-all duration-200">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="text-3xl font-bold text-gray-900 mb-1">{totalTasks}</h4>
@@ -29,7 +29,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
       </div>
 
       {/* Completed Tasks Card */}
-      <div className="phoenix-card p-6 hover:shadow-lg transition-all duration-200">
+      <div className="theme-card p-6 hover:shadow-lg transition-all duration-200">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="text-3xl font-bold text-gray-900 mb-1">{completedTasks}</h4>
@@ -48,7 +48,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
       </div>
 
       {/* Pending Tasks Card */}
-      <div className="phoenix-card p-6 hover:shadow-lg transition-all duration-200">
+      <div className="theme-card p-6 hover:shadow-lg transition-all duration-200">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="text-3xl font-bold text-gray-900 mb-1">{pendingTasks}</h4>
@@ -64,7 +64,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
       </div>
 
       {/* Onboarding Progress Card */}
-      <div className="phoenix-card p-6 hover:shadow-lg transition-all duration-200">
+      <div className="theme-card p-6 hover:shadow-lg transition-all duration-200">
         <div className="flex items-center justify-between">
           <div>
             <h4 className="text-3xl font-bold text-gray-900 mb-1">{onboardingProgress}%</h4>
@@ -83,9 +83,9 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
         
         {/* Progress Bar */}
         <div className="mt-4">
-          <div className="phoenix-progress-bar">
+          <div className="theme-progress-bar">
             <div 
-              className="phoenix-progress-fill bg-gradient-to-r from-blue-500 to-purple-600"
+              className="theme-progress-fill bg-gradient-to-r from-blue-500 to-purple-600"
               style={{ width: `${onboardingProgress}%` }}
             ></div>
           </div>
