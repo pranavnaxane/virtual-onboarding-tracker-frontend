@@ -2,6 +2,7 @@ export interface SidebarLinkProps {
   label: string;
   href?: string;
   isActive?: boolean;
+  onClick?: () => void;
 }
 
 
@@ -17,3 +18,9 @@ export type HRProfileData = {
   updatedAt: string;
   avatar?: string;
 };
+
+export interface HeaderProps {
+  profileInfo: HRProfileData;
+  onMenuToggle?: () => void;
+  isSidebarOpen?: boolean;
+}
