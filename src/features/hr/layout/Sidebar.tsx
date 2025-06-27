@@ -1,5 +1,3 @@
-'use client'; // For Next.js if applicable
-
 import { memo, type FC } from "react";
 import { useSidebar } from "../../../context";
 import type { SidebarLinkProps } from "../types/hr.types";
@@ -30,11 +28,17 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
       <aside className="hidden lg:fixed lg:top-14 xl:top-16 lg:left-0 lg:w-56 xl:w-64 lg:h-[calc(100vh-3.5rem)] xl:h-[calc(100vh-4rem)] lg:bg-white lg:border-r-2 lg:border-black/20 lg:shadow-sm lg:flex lg:flex-col lg:z-40 transition-all duration-300">
         <nav className="flex-1 px-4 xl:px-6 py-4 xl:py-5 overflow-y-auto text-gray-800 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           <div className="space-y-1">
-            <SidebarLink label="Home" className="mt-2 mb-1" isActive={selectedTab === 'Home'} onPress={sideBarClicked}/>
-            <SidebarLink label="Users" isActive={selectedTab === 'Users'} onPress={sideBarClicked}/>
-            <SidebarLink label="Dashboard" />
-            <SidebarLink label="Reports" />
-            <SidebarLink label="Settings" />
+            <SidebarLink
+              label="Home"
+              className="mt-2 mb-1"
+              isActive={selectedTab === "Home"}
+              onPress={sideBarClicked}
+            />
+            <SidebarLink
+              label="Users"
+              isActive={selectedTab === "Users"}
+              onPress={sideBarClicked}
+            />
           </div>
         </nav>
 
@@ -44,8 +48,18 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
             className="w-full text-left px-3 py-2.5 xl:py-3 text-gray-600 rounded-md font-medium hover:bg-red-50 hover:text-red-600 transition-all duration-200 border border-black/10 hover:border-red-200 text-sm xl:text-base"
           >
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
               </svg>
               <span>Logout</span>
             </div>
@@ -79,8 +93,18 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
             onClick={onClose}
           >
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
               </svg>
               <span>Logout</span>
             </div>
@@ -97,13 +121,20 @@ interface SidebarLinkPropsExtended extends SidebarLinkProps {
 }
 
 const SidebarLink: FC<SidebarLinkPropsExtended> = memo(
-  ({ label, href = "#", isActive = false, className = "", onClick, onPress }) => {
+  ({
+    label,
+    href = "#",
+    isActive = false,
+    className = "",
+    onClick,
+    onPress,
+  }) => {
     const handleClick = (e: React.MouseEvent) => {
       if (onClick) {
         e.preventDefault();
         onClick();
       }
-      onPress?.(label)
+      onPress?.(label);
     };
 
     return (
@@ -123,7 +154,6 @@ const SidebarLink: FC<SidebarLinkPropsExtended> = memo(
         aria-current={isActive ? "page" : undefined}
       >
         <div className="flex items-center gap-2">
-          {/* Icon placeholder - you can add specific icons for each link */}
           <div className="w-1.5 h-1.5 rounded-full bg-current opacity-60"></div>
           <span className="truncate">{label}</span>
         </div>
