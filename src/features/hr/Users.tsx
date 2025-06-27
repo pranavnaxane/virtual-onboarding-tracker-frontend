@@ -1,8 +1,8 @@
-import {useState } from "react";
+import { useState } from "react";
 // @ts-ignore
 import Users from "../../mocks/dummy_users_1000";
 
-const UsersPage = () => {
+export const UsersPage = () => {
   const [hrId, setHrId] = useState("600b18f1-bdef-4ec3-8819-96a84058f786");
   const [searchTerm, setSearchTerm] = useState("");
   const filteredUsers = Users.filter(
@@ -57,5 +57,3 @@ const UsersPage = () => {
     </div>
   );
 };
-
-export default UsersPage;

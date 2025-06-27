@@ -3,8 +3,8 @@ import Header from "./layout/Header";
 import Sidebar from "./layout/Sidebar";
 import type { HRProfileData } from "./types/hr.types";
 import { useSidebar } from "../../context";
-import UsersPage from "./Users";
 import HomePage from "./Home";
+import { UsersPage } from "./Users";
 
 const HRDashboard: FC = () => {
   const { selectedTab } = useSidebar();
