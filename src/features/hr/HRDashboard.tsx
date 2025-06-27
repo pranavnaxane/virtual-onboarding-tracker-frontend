@@ -2,8 +2,8 @@ import { type FC, useState } from "react";
 import Header from "./layout/Header";
 import Sidebar from "./layout/Sidebar";
 import type { HRProfileData } from "./types/hr.types";
-import UsersPage from "./Users";
 import { useSidebar } from "../../context";
+import { UsersPage } from "./Users";
 
 const HRDashboard: FC = () => {
   const { selectedTab } = useSidebar();
