@@ -1,8 +1,9 @@
-import LoginPage from "./features/loginPage/loginPage";
+import { EmployeeDashboard } from "./features/employee";
+
 function App() {
 
   return <div>
-    <LoginPage />
+    <EmployeeDashboard />
   </div>;
 }
 
