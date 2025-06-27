@@ -3,6 +3,7 @@ export interface SidebarLinkProps {
   href?: string;
   isActive?: boolean;
   onClick?: () => void;
+  onPress?: (label: string) => void
 }
 
 

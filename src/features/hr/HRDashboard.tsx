@@ -2,8 +2,14 @@ import { type FC, useState } from "react";
 import Header from "./layout/Header";
 import Sidebar from "./layout/Sidebar";
 import type { HRProfileData } from "./types/hr.types";
+import UsersPage from "../Dashboard/Users";
+import { useSidebar } from '../../context';
+
+
+
 
 const HRDashboard: FC = () => {
+  const { selectedTab } = useSidebar();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const hrProfile: HRProfileData = {
@@ -109,6 +115,7 @@ const HRDashboard: FC = () => {
             </div>
           </div>
         </div>
+         {selectedTab === 'Users' ? <UsersPage />:<h2>home</h2>}
       </main>
     </div>
   );
