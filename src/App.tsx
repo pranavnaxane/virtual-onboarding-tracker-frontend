@@ -1,13 +1,14 @@
-import LoginPage from "./features/loginPage/loginPage";
-import { HRDashboard } from "./features/hr";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
 import { SidebarProvider } from "./context";
+
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <SidebarProvider>
-        <HRDashboard />
+        <AppRoutes />
       </SidebarProvider>
-    </div>
+    </BrowserRouter>
   );
 }
 
