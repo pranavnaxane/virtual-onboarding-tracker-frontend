@@ -2,11 +2,8 @@ import { type FC, useState } from "react";
 import Header from "./layout/Header";
 import Sidebar from "./layout/Sidebar";
 import type { HRProfileData } from "./types/hr.types";
-import UsersPage from "../Dashboard/Users";
-import { useSidebar } from '../../context';
-
-
-
+import UsersPage from "./Users";
+import { useSidebar } from "../../context";
 
 const HRDashboard: FC = () => {
   const { selectedTab } = useSidebar();
@@ -31,13 +28,13 @@ const HRDashboard: FC = () => {
 
   return (
     <div className="h-screen w-screen overflow-hidden bg-gray-50">
-      <Header 
-        profileInfo={hrProfile} 
+      <Header
+        profileInfo={hrProfile}
         onMenuToggle={toggleSidebar}
         isSidebarOpen={isSidebarOpen}
       />
       <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
-      
+
       <main
         className={`
           transition-all duration-300 ease-in-out
@@ -56,31 +53,44 @@ const HRDashboard: FC = () => {
               Welcome to the HR Dashboard
             </h2>
             <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
-              This area scrolls independently and is fully responsive. Add onboarding forms, 
-              task lists, or reports here. The layout adapts seamlessly across all device sizes.
+              This area scrolls independently and is fully responsive. Add
+              onboarding forms, task lists, or reports here. The layout adapts
+              seamlessly across all device sizes.
             </p>
           </div>
-          
+
           {/* Sample content cards for demonstration */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Quick Stats</h3>
-              <p className="text-gray-600 text-sm">Dashboard metrics and KPIs</p>
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                Quick Stats
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Dashboard metrics and KPIs
+              </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Recent Activity</h3>
-              <p className="text-gray-600 text-sm">Latest onboarding activities</p>
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                Recent Activity
+              </h3>
+              <p className="text-gray-600 text-sm">
+                Latest onboarding activities
+              </p>
             </div>
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
-              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">Pending Tasks</h3>
+              <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
+                Pending Tasks
+              </h3>
               <p className="text-gray-600 text-sm">Items requiring attention</p>
             </div>
           </div>
-          
+
           {/* Additional content for scroll demonstration */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
-              <h3 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">Employee Onboarding</h3>
+              <h3 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">
+                Employee Onboarding
+              </h3>
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-600">New Hires This Month</span>
@@ -97,7 +107,9 @@ const HRDashboard: FC = () => {
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
-              <h3 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">Department Overview</h3>
+              <h3 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">
+                Department Overview
+              </h3>
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-sm">
                   <span className="text-gray-600">Sales Team</span>
@@ -115,7 +127,7 @@ const HRDashboard: FC = () => {
             </div>
           </div>
         </div>
-         {selectedTab === 'Users' ? <UsersPage />:<h2>home</h2>}
+        {selectedTab === "Users" ? <UsersPage /> : <h2>home</h2>}
       </main>
     </div>
   );
