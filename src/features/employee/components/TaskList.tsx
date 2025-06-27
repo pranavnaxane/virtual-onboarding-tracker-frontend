@@ -108,17 +108,33 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onTaskStatusUpdate })
               </div>
 
               <div className="ml-6">
-                <select
-                  value={task.status}
-                  onChange={(e) =>
-                    handleStatusChange(task.id, e.target.value as Task["status"])
-                  }
-                  className="text-sm border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white min-w-[120px]"
-                >
-                  <option value="pending">Pending</option>
-                  <option value="in-progress">In Progress</option>
-                  <option value="completed">Completed</option>
-                </select>
+                <div className="relative">
+                  <select
+                    value={task.status}
+                    onChange={(e) =>
+                      handleStatusChange(task.id, e.target.value as Task["status"])
+                    }
+                    className="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2.5 pr-10 text-sm font-medium text-gray-700 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md min-w-[140px]"
+                  >
+                    <option value="pending">📋 Pending</option>
+                    <option value="in-progress">⚡ In Progress</option>
+                    <option value="completed">✅ Completed</option>
+                  </select>
+                  
+                  {/* Custom Dropdown Arrow */}
+                  <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                    <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                  
+                  {/* Status Indicator Dot */}
+                  <div className={`absolute left-3 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full ${
+                    task.status === 'completed' ? 'bg-green-500' :
+                    task.status === 'in-progress' ? 'bg-blue-500' :
+                    'bg-orange-500'
+                  }`}></div>
+                </div>
               </div>
             </div>
           </div>
