@@ -147,12 +147,10 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) =>
       <div className="space-y-3">
         {activities.map((activity, index) => (
           <div key={activity.id} className={`flex items-start gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-50 ${index === 0 ? 'bg-blue-50/30 border border-blue-100' : ''}`}>
-            {/* Activity Icon */}
             <div className="flex-shrink-0">
               {getActivityIcon(activity.type)}
             </div>
 
-            {/* Activity Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
@@ -192,7 +190,6 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) =>
         )}
       </div>
 
-      {/* View All Link */}
       {activities.length > 0 && (
         <div className="mt-6 pt-4 border-t border-gray-200">
           <button className="w-full text-center text-sm text-blue-600 hover:text-blue-800 font-medium py-2 hover:bg-blue-50 rounded-lg transition-colors">

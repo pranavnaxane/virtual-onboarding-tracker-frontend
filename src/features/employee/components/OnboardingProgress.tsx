@@ -76,7 +76,6 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
         </div>
       </div>
 
-      {/* Progress Bar */}
       <div className="mb-8">
         <div className="flex justify-between text-sm text-gray-600 mb-3">
           <span className="font-medium">Overall Progress</span>
@@ -90,12 +89,10 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
         </div>
       </div>
 
-      {/* Onboarding Steps */}
       <div className="space-y-5">
         <h3 className="font-semibold text-gray-900 mb-4 text-lg">Onboarding Checklist</h3>
         {onboardingSteps.map((step, index) => (
           <div key={step.id} className="flex items-start gap-4">
-            {/* Step Indicator */}
             <div className="flex-shrink-0 mt-1">
               {step.completed ? (
                 <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center shadow-sm">
@@ -118,7 +115,6 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
               )}
             </div>
 
-            {/* Step Content */}
             <div className="flex-1">
               <div className="flex items-center justify-between">
                 <h4
@@ -128,7 +124,6 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
                 >
                   {step.title}
                 </h4>
-                {/* Status Badge */}
                 <div className="flex-shrink-0">
                   {step.completed ? (
                     <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
@@ -153,7 +148,6 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
         ))}
       </div>
 
-      {/* Next Steps */}
       {progress < 100 && (
         <div className="mt-8 p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-100">
           <div className="flex items-start gap-3">
@@ -176,7 +170,6 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
         </div>
       )}
 
-      {/* Completion Message */}
       {progress >= 100 && (
         <div className="mt-8 p-5 bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl border border-green-100">
           <div className="flex items-start gap-3">

@@ -1,11 +1,8 @@
-/* Phoenix-inspired color scheme */
 :root {
-  /* Primary Colors */
   --primary: #3874cb;
   --primary-dark: #2c5aa0;
   --primary-light: #5a8bd8;
   
-  /* Gray Scale */
   --gray-25: #fafbfc;
   --gray-50: #f8fafc;
   --gray-100: #f1f5f9;
@@ -20,28 +17,23 @@
   --gray-1000: #0c1427;
   --gray-1100: #0a1120;
   
-  /* Success Colors */
   --success-100: #dcfce7;
   --success-500: #22c55e;
   --success-600: #16a34a;
   
-  /* Warning Colors */
   --warning-100: #fef3c7;
   --warning-500: #f59e0b;
   --warning-600: #d97706;
   
-  /* Danger Colors */
   --danger-100: #fee2e2;
   --danger-500: #ef4444;
   --danger-600: #dc2626;
   
-  /* Info Colors */
   --info-100: #dbeafe;
   --info-500: #3b82f6;
   --info-600: #2563eb;
 }
 
-/* Tailwind custom classes */
 .bg-gray-25 { background-color: var(--gray-25); }
 .bg-primary { background-color: var(--primary); }
 .bg-primary-dark { background-color: var(--primary-dark); }
@@ -50,7 +42,6 @@
 .border-primary { border-color: var(--primary); }
 .hover\:bg-primary-dark:hover { background-color: var(--primary-dark); }
 
-/* Theme-style card shadows */
 .theme-card {
   background: white;
   border-radius: 0.75rem;
@@ -62,7 +53,6 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-/* Theme-style buttons */
 .theme-btn-primary {
   background-color: var(--primary);
   color: white;
@@ -78,7 +68,6 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-/* Theme-style progress bars */
 .theme-progress-bar {
   height: 0.5rem;
   background-color: var(--gray-200);

@@ -52,7 +52,6 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
         </button>
       </div>
 
-      {/* Profile Picture and Basic Info */}
       <div className="text-center mb-6">
         <div className="relative inline-block">
           {employee.avatar ? (
@@ -61,7 +60,6 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
               alt={employee.name}
               className="w-20 h-20 rounded-full object-cover mx-auto shadow-lg"
               onError={(e) => {
-                // Fallback to initials if image fails to load
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
                 const fallback = target.nextElementSibling as HTMLElement;
@@ -77,7 +75,6 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
             {getInitials(employee.name)}
           </div>
           
-          {/* Online Status Indicator */}
           <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-500 border-2 border-white rounded-full shadow-sm"></div>
         </div>
         
@@ -86,7 +83,6 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
         <p className="text-gray-500 text-sm">{employee.department}</p>
       </div>
 
-      {/* Contact Information */}
       <div className="space-y-4">
         <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
           <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -138,7 +134,6 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
         </div>
       </div>
 
-      {/* Quick Actions */}
       <div className="mt-8 pt-6 border-t border-gray-200">
         <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Quick Actions</h4>
         
@@ -182,7 +177,6 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
         </div>
       </div>
 
-      {/* Status Badge */}
       <div className="mt-8 pt-6 border-t border-gray-200">
         <div className="flex items-center justify-between">
           <span className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Status</span>

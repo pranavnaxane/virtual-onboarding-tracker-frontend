@@ -13,10 +13,8 @@ const EmployeeDashboard: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate API call to fetch employee data
     const fetchEmployeeData = async () => {
       try {
-        // Mock data - replace with actual API calls
         const mockEmployee: Employee = {
           id: "emp-001",
           name: "John Doe",
@@ -123,7 +121,6 @@ const EmployeeDashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-25">
-      {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
@@ -143,12 +140,9 @@ const EmployeeDashboard: React.FC = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          {/* Left Column - Main Content */}
           <div className="lg:col-span-8 space-y-8">
-            {/* Employee Stats */}
             <EmployeeStats 
               totalTasks={tasks.length}
               completedTasks={tasks.filter(t => t.status === "completed").length}
@@ -156,25 +150,20 @@ const EmployeeDashboard: React.FC = () => {
               onboardingProgress={employee.onboardingProgress}
             />
 
-            {/* Task List */}
             <TaskList 
               tasks={tasks}
               onTaskStatusUpdate={handleTaskStatusUpdate}
             />
 
-            {/* Onboarding Progress */}
             <OnboardingProgress 
               progress={employee.onboardingProgress}
               employee={employee}
             />
           </div>
 
-          {/* Right Column - Sidebar */}
           <div className="lg:col-span-4 space-y-8">
-            {/* Employee Profile */}
             <EmployeeProfile employee={employee} />
 
-            {/* Recent Activity */}
             <RecentActivity activities={activities} />
           </div>
         </div>

@@ -7,7 +7,6 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
   pendingTasks,
   onboardingProgress,
 }) => {
-  const inProgressTasks = totalTasks - completedTasks - pendingTasks;
   const completionRate = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 
   const stats = [
@@ -83,15 +82,12 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
           key={stat.id}
           className={`relative overflow-hidden rounded-xl border border-gray-200 ${stat.bgColor} p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 group`}
         >
-          {/* Background Pattern */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-current"></div>
             <div className="absolute -bottom-2 -left-2 h-16 w-16 rounded-full bg-current"></div>
           </div>
 
-          {/* Content */}
           <div className="relative">
-            {/* Header */}
             <div className="flex items-center justify-between mb-4">
               <div className={`inline-flex h-12 w-12 items-center justify-center rounded-lg ${stat.iconBg} ${stat.iconColor} transition-transform duration-300 group-hover:scale-110`}>
                 {stat.icon}
@@ -103,13 +99,11 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
               </div>
             </div>
 
-            {/* Details */}
             <div className="space-y-1">
               <h3 className="text-lg font-semibold text-gray-900">{stat.title}</h3>
               <p className="text-sm text-gray-600">{stat.subtitle}</p>
             </div>
 
-            {/* Progress Bar for Onboarding */}
             {stat.hasProgressBar && (
               <div className="mt-4">
                 <div className="flex items-center justify-between text-xs text-gray-600 mb-2">
@@ -125,7 +119,6 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({
               </div>
             )}
 
-            {/* Trend Indicator for Completed Tasks */}
             {stat.showTrend && completionRate > 0 && (
               <div className="mt-3 flex items-center text-xs">
                 <svg className="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
