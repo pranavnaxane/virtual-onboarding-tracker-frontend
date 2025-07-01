@@ -23,9 +23,7 @@ const Header: FC<HeaderProps> = ({
   return (
     <header className="fixed top-0 left-0 right-0 h-14 sm:h-16 md:h-20 bg-white shadow-sm border-b-2 border-black/20 z-50 transition-all duration-300">
       <div className="flex items-center justify-between h-full px-3 sm:px-4 md:px-6 lg:px-8">
-        {/* Left Section - Menu Button & Logo */}
         <div className="flex items-center gap-2 sm:gap-3 md:gap-4 min-w-0 flex-1 lg:flex-none">
-          {/* Mobile Menu Button */}
           <button
             onClick={onMenuToggle}
             className="lg:hidden p-1.5 sm:p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 border border-black/10 hover:border-black/20"
@@ -54,16 +52,13 @@ const Header: FC<HeaderProps> = ({
             </svg>
           </button>
 
-          {/* Logo */}
           <h1 className="text-base sm:text-lg md:text-xl font-semibold text-gray-800 truncate min-w-0">
             <span className="hidden sm:inline">Onboarding-Tracker</span>
             <span className="sm:hidden text-sm">OT</span>
           </h1>
         </div>
 
-        {/* Right Section - Search & Profile */}
         <div className="flex items-center gap-1 sm:gap-2 md:gap-4 min-w-0">
-          {/* Desktop Search Box */}
           <div className="hidden md:block relative flex-shrink-0">
             <input
               type="text"
@@ -82,7 +77,6 @@ const Header: FC<HeaderProps> = ({
             </svg>
           </div>
 
-          {/* Mobile Search Button */}
           <button
             onClick={toggleSearch}
             className="md:hidden p-1.5 sm:p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 border border-black/10 hover:border-black/20 flex-shrink-0"
@@ -100,7 +94,6 @@ const Header: FC<HeaderProps> = ({
             </svg>
           </button>
 
-          {/* Profile Avatar */}
           <button
             onClick={navigateToHRProfile}
             className="flex items-center gap-1 sm:gap-2 p-1 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 border border-black/10 hover:border-black/20 min-w-0 flex-shrink-0"
@@ -118,7 +111,6 @@ const Header: FC<HeaderProps> = ({
         </div>
       </div>
 
-      {/* Mobile Search Overlay */}
       {isSearchOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b-2 border-black/20 shadow-lg z-40 animate-in slide-in-from-top-2 duration-200">
           <div className="p-3 sm:p-4">

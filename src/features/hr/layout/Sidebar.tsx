@@ -15,7 +15,6 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
   };
   return (
     <>
-      {/* Mobile Overlay */}
       {isOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm z-30 transition-opacity duration-300"
@@ -24,7 +23,6 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
         />
       )}
 
-      {/* Desktop Sidebar */}
       <aside className="hidden lg:fixed lg:top-14 xl:top-16 lg:left-0 lg:w-56 xl:w-64 lg:h-[calc(100vh-3.5rem)] xl:h-[calc(100vh-4rem)] lg:bg-white lg:border-r-2 lg:border-black/20 lg:shadow-sm lg:flex lg:flex-col lg:z-40 transition-all duration-300">
         <nav className="flex-1 px-4 xl:px-6 py-4 xl:py-5 overflow-y-auto text-gray-800 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           <div className="space-y-1">
@@ -67,7 +65,6 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
         </div>
       </aside>
 
-      {/* Mobile Sidebar */}
       <aside
         className={`
           lg:hidden fixed top-14 sm:top-16 left-0 w-64 sm:w-72 h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)]
@@ -115,7 +112,6 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
   );
 };
 
-// Extend the SidebarLinkProps to accept extra optional props
 interface SidebarLinkPropsExtended extends SidebarLinkProps {
   className?: string;
 }

@@ -8,7 +8,6 @@ const HomePage = () => {
             </h2>
           </div>
 
-          {/* Sample content cards for demonstration */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
               <h3 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">
@@ -34,7 +33,6 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Additional content for scroll demonstration */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <div className="bg-white rounded-lg shadow-sm border border-black/10 p-4 sm:p-6 transition-all duration-200 hover:shadow-md hover:border-black/20">
               <h3 className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">

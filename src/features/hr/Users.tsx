@@ -1,5 +1,4 @@
 import { useState } from "react";
-// @ts-ignore
 import Users from "../../mocks/dummy_users_1000";
 
 export const UsersPage = () => {

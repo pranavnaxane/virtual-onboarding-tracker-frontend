@@ -25,7 +25,6 @@ export const HRProfile: FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-6 md:p-10">
-      {/* Back Button */}
       <button
         onClick={() => window.history.back()}
         className="flex items-center text-blue-600 hover:text-blue-800 font-medium mb-8 transition-colors duration-200"
@@ -46,10 +45,8 @@ export const HRProfile: FC = () => {
         Home
       </button>
 
-      {/* Profile Card */}
       <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
         <div className="flex flex-col md:flex-row">
-          {/* Profile Image Section */}
           <div className="w-full md:w-1/3 p-8 bg-gradient-to-b from-blue-50 to-gray-50 flex flex-col items-center">
             <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden shadow-2xl border-4 border-white mb-6">
               {hr.avatar ? (
@@ -69,7 +66,6 @@ export const HRProfile: FC = () => {
               )}
             </div>
 
-            {/* Role/Designation */}
             <div className="text-center">
               <h2 className="text-2xl font-bold text-gray-900">
                 {hr.designation}
@@ -96,7 +92,6 @@ export const HRProfile: FC = () => {
                 {hr.region}
               </p>
 
-              {/* Status Badge */}
               <div className="mt-6">
                 <span
                   className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold ${
@@ -116,14 +111,12 @@ export const HRProfile: FC = () => {
             </div>
           </div>
 
-          {/* Profile Info Section */}
           <div className="w-full md:w-2/3 p-8 md:p-10">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">{hr.name}</h1>
             <div className="border-b border-gray-200 pb-6 mb-6">
               <p className="text-gray-600">HR Professional | {hr.email}</p>
             </div>
 
-            {/* Info Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <DetailCard label="HR ID" value={hr.hrId} icon="id" />
               <DetailCard label="Email" value={hr.email} icon="mail" />
@@ -144,7 +137,6 @@ export const HRProfile: FC = () => {
               />
             </div>
 
-            {/* Action Buttons */}
             <div className="mt-12 flex flex-col sm:flex-row justify-end gap-4">
               <button
                 className="px-6 py-3 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors duration-200 font-medium flex items-center justify-center"
