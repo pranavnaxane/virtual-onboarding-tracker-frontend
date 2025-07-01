@@ -1,6 +1,7 @@
 import { memo, type FC } from "react";
 import { useSidebar } from "../../../context";
 import type { SidebarLinkProps } from "../types/hr.types";
+import { useNavigate } from "react-router-dom";
 
 interface SidebarProps {
   isOpen?: boolean;
@@ -9,8 +10,14 @@ interface SidebarProps {
 
 const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
   const { setSelectedTab, selectedTab } = useSidebar();
-
+  const navigate = useNavigate();
   const sideBarClicked = (menuItem: string) => {
+    if (menuItem == "Home") {
+      navigate("/hr/dashboard/home");
+    } else if (menuItem === "Users") {
+      navigate("/hr/dashboard/users");
+    }
+
     setSelectedTab(menuItem);
   };
   return (

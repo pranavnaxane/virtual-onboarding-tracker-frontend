@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Users from "../../mocks/dummy_users_1000";
+import { useNavigate } from "react-router-dom";
 
 export const UsersPage = () => {
   const [hrId, setHrId] = useState("600b18f1-bdef-4ec3-8819-96a84058f786");
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
   const filteredUsers = Users.filter(
     (user: any) =>
       user.hrId === hrId &&
@@ -49,6 +51,9 @@ export const UsersPage = () => {
                 <p className="text-xs text-gray-400 mt-auto">
                   Joined: {user.joiningDate}
                 </p>
+                <button onClick={() => navigate(`/hr/dashboard/checklist/${user.userId}`)} className="mt-4 w-full py-2 text-sm font-medium bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 shadow hover:shadow-md transition duration-300">
+                  checklist
+                </button>
               </div>
             ))}
         </div>
