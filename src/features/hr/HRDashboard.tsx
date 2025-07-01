@@ -3,8 +3,7 @@ import Header from "./layout/Header";
 import Sidebar from "./layout/Sidebar";
 import type { HRProfileData } from "./types/hr.types";
 import { useSidebar } from "../../context";
-import HomePage from "./Home";
-import { UsersPage } from "./Users";
+import { Outlet } from "react-router-dom";
 
 const HRDashboard: FC = () => {
   const { selectedTab } = useSidebar();
@@ -48,7 +47,7 @@ const HRDashboard: FC = () => {
         `}
         role="main"
       >
-        {selectedTab === "Users" ? <UsersPage /> : <HomePage />}
+        <Outlet />
       </main>
     </div>
   );
