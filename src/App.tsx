@@ -1,8 +1,7 @@
 import LoginPage from "./features/loginPage/loginPage";
 function App() {
-
   return <div>
-    <LoginPage/>
+    <LoginPage />
   </div>;
 }
 
