@@ -1,8 +1,15 @@
-import LoginPage from "./features/loginPage/loginPage";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./routes/AppRoutes";
+import { SidebarProvider } from "./context";
+
 function App() {
-  return <div>
-    <LoginPage />
-  </div>;
+  return (
+    <BrowserRouter>
+      <SidebarProvider>
+        <AppRoutes />
+      </SidebarProvider>
+    </BrowserRouter>
+  );
 }
 
 export default App;
