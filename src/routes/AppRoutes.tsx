@@ -32,7 +32,7 @@ const AppRoutes = () => {
         <Route path="checklist/:employeeId" element={<Checklist />} />
       </Route>
 
-      <Route path="employee/dashboard" element={<EmployeeDashboard />}/>
+      <Route path="/employee/dashboard" element={<EmployeeDashboard />}/>
 
       <Route path="/hr/profile" element={<HRProfile />} />
 
