@@ -3,6 +3,7 @@ import LoginPage from "../features/loginPage/loginPage";
 import { HRDashboard, HRProfile, UsersPage } from "../features/hr";
 import Checklist from "../features/hr/Checklist";
 import HomePage from "../features/hr/Home";
+import {EmployeeDashboard} from "../features/employee/";
 
 const AppRoutes = () => {
   return (
@@ -30,6 +31,8 @@ const AppRoutes = () => {
         <Route path="users" element={<UsersPage />} />
         <Route path="checklist/:employeeId" element={<Checklist />} />
       </Route>
+
+      <Route path="/employee/dashboard" element={<EmployeeDashboard />}/>
 
       <Route path="/hr/profile" element={<HRProfile />} />
 
