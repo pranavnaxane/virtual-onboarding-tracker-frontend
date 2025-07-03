@@ -1,130 +1,103 @@
 import React from "react";
-import type { RecentActivityProps, Activity } from "../types/employee.types";
+import type { RecentActivityProps } from "../types/employee.types";
 
 export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) => {
-  const getActivityIcon = (type: Activity["type"]) => {
+  const formatTimeAgo = (timestamp: string) => {
+    const now = new Date();
+    const activityTime = new Date(timestamp);
+    const diffInMinutes = Math.floor((now.getTime() - activityTime.getTime()) / (1000 * 60));
+    
+    if (diffInMinutes < 1) {
+      return "Just now";
+    } else if (diffInMinutes < 60) {
+      return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
+    } else if (diffInMinutes < 1440) { // 24 hours
+      const hours = Math.floor(diffInMinutes / 60);
+      return `${hours} hour${hours !== 1 ? 's' : ''} ago`;
+    } else {
+      const days = Math.floor(diffInMinutes / 1440);
+      return `${days} day${days !== 1 ? 's' : ''} ago`;
+    }
+  };
+
+  const getActivityIcon = (type: string) => {
     switch (type) {
       case "task_completed":
         return (
-          <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          </svg>
         );
       case "task_started":
         return (
-          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+          </svg>
         );
-      case "document_viewed":
+      case "document_uploaded":
         return (
-          <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clipRule="evenodd" />
+          </svg>
         );
-      case "training_started":
+      case "document_approved":
         return (
-          <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+          </svg>
         );
-      case "training_completed":
+      case "document_rejected":
         return (
-          <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z" />
-            </svg>
-          </div>
-        );
-      case "meeting_scheduled":
-        return (
-          <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+          </svg>
         );
       case "profile_updated":
         return (
-          <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+          </svg>
         );
       default:
         return (
-          <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
-            <svg className="w-5 h-5 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
-              <path
-                fillRule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </div>
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+          </svg>
         );
     }
   };
 
-  const formatTimestamp = (timestamp: string) => {
-    const date = new Date(timestamp);
-    const now = new Date();
-    const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60));
-    
-    if (diffInHours < 1) {
-      const diffInMinutes = Math.floor((now.getTime() - date.getTime()) / (1000 * 60));
-      return `${diffInMinutes} minute${diffInMinutes !== 1 ? 's' : ''} ago`;
-    } else if (diffInHours < 24) {
-      return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
-    } else {
-      const diffInDays = Math.floor(diffInHours / 24);
-      return `${diffInDays} day${diffInDays !== 1 ? 's' : ''} ago`;
+  const getActivityColor = (type: string) => {
+    switch (type) {
+      case "task_completed":
+        return "bg-green-100 text-green-600";
+      case "task_started":
+        return "bg-blue-100 text-blue-600";
+      case "document_uploaded":
+        return "bg-purple-100 text-purple-600";
+      case "document_approved":
+        return "bg-green-100 text-green-600";
+      case "document_rejected":
+        return "bg-red-100 text-red-600";
+      case "profile_updated":
+        return "bg-indigo-100 text-indigo-600";
+      default:
+        return "bg-gray-100 text-gray-600";
     }
   };
 
-  const getActivityTypeLabel = (type: Activity["type"]) => {
+  const getActivityTitle = (type: string) => {
     switch (type) {
       case "task_completed":
         return "Task Completed";
       case "task_started":
         return "Task Started";
-      case "document_viewed":
-        return "Document Viewed";
-      case "training_started":
-        return "Training Started";
-      case "training_completed":
-        return "Training Completed";
-      case "meeting_scheduled":
-        return "Meeting Scheduled";
+      case "document_uploaded":
+        return "Document Uploaded";
+      case "document_approved":
+        return "Document Approved";
+      case "document_rejected":
+        return "Document Rejected";
       case "profile_updated":
         return "Profile Updated";
       default:
@@ -133,34 +106,36 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) =>
   };
 
   return (
-    <div className="theme-card p-6 h-fit">
+    <div className="theme-card p-6">
       <div className="flex justify-between items-center mb-6">
         <div>
           <h2 className="text-xl font-bold text-gray-900">Recent Activity</h2>
           <p className="text-gray-600 text-sm mt-1">Your latest actions and updates</p>
         </div>
-        <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+        <div className="text-sm text-gray-500">
           {activities.length} activities
-        </span>
+        </div>
       </div>
 
-      <div className="space-y-3">
-        {activities.map((activity, index) => (
-          <div key={activity.id} className={`flex items-start gap-3 p-3 rounded-lg transition-all duration-200 hover:bg-gray-50 ${index === 0 ? 'bg-blue-50/30 border border-blue-100' : ''}`}>
-            <div className="flex-shrink-0">
+      <div className="space-y-4">
+        {activities.slice(0, 5).map((activity) => (
+          <div key={activity.id} className="flex items-start gap-3 p-4 rounded-lg hover:bg-gray-50 transition-colors">
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${getActivityColor(activity.type)}`}>
               {getActivityIcon(activity.type)}
             </div>
-
+            
             <div className="flex-1 min-w-0">
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-gray-900 text-sm">
-                    {getActivityTypeLabel(activity.type)}
+                    {getActivityTitle(activity.type)}
                   </p>
-                  <p className="text-gray-600 mt-1 leading-relaxed text-sm break-words">{activity.description}</p>
+                  <p className="text-gray-600 mt-1 leading-relaxed text-sm break-words">
+                    {activity.description}
+                  </p>
                 </div>
                 <span className="text-xs text-gray-500 ml-2 flex-shrink-0">
-                  {formatTimestamp(activity.timestamp)}
+                  {formatTimeAgo(activity.timestamp)}
                 </span>
               </div>
             </div>
@@ -168,35 +143,23 @@ export const RecentActivity: React.FC<RecentActivityProps> = ({ activities }) =>
         ))}
 
         {activities.length === 0 && (
-          <div className="text-center py-12">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg
-                className="w-8 h-8 text-gray-400"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={1.5}
-                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </div>
-            <p className="text-gray-500 font-medium">No recent activity</p>
-            <p className="text-gray-400 text-sm mt-1">Your activities will appear here</p>
+          <div className="text-center py-8">
+            <svg className="w-12 h-12 text-gray-300 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+            </svg>
+            <h3 className="text-lg font-medium text-gray-900 mb-2">No recent activity</h3>
+            <p className="text-gray-600">Your activity will appear here as you complete tasks and upload documents.</p>
+          </div>
+        )}
+
+        {activities.length > 5 && (
+          <div className="pt-4 border-t border-gray-200">
+            <p className="text-center text-sm text-gray-500">
+              Showing 5 of {activities.length} activities
+            </p>
           </div>
         )}
       </div>
-
-      {activities.length > 0 && (
-        <div className="mt-6 pt-4 border-t border-gray-200">
-          <button className="w-full text-center text-sm text-blue-600 hover:text-blue-800 font-medium py-2 hover:bg-blue-50 rounded-lg transition-colors">
-            View all activity →
-          </button>
-        </div>
-      )}
     </div>
   );
 };

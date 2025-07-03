@@ -43,13 +43,26 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
       .toUpperCase();
   };
 
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case "active":
+        return "bg-green-100 text-green-800 border-green-200";
+      case "pending":
+        return "bg-yellow-100 text-yellow-800 border-yellow-200";
+      case "inactive":
+        return "bg-gray-100 text-gray-800 border-gray-200";
+      default:
+        return "bg-gray-100 text-gray-800 border-gray-200";
+    }
+  };
+
   return (
     <div className="theme-card p-6 h-fit">
       <div className="flex justify-between items-start mb-6">
-        <h2 className="text-xl font-bold text-gray-900">Profile</h2>
-        <button className="text-sm text-blue-600 hover:text-blue-800 font-medium transition-colors">
-          Edit
-        </button>
+        <h2 className="text-xl font-bold text-gray-900">Employee Profile</h2>
+        <span className={`px-3 py-1 rounded-full text-xs font-medium border ${getStatusColor(employee.status)}`}>
+          {employee.status}
+        </span>
       </div>
 
       <div className="text-center mb-6">
@@ -75,7 +88,10 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
             {getInitials(employee.name)}
           </div>
           
-          <div className="absolute bottom-0 right-0 w-5 h-5 bg-green-500 border-2 border-white rounded-full shadow-sm"></div>
+          <div className={`absolute bottom-0 right-0 w-5 h-5 border-2 border-white rounded-full shadow-sm ${
+            employee.status === "active" ? "bg-green-500" :
+            employee.status === "pending" ? "bg-yellow-500" : "bg-gray-500"
+          }`}></div>
         </div>
         
         <h3 className="text-xl font-bold text-gray-900 mt-3">{employee.name}</h3>
@@ -134,57 +150,26 @@ export const EmployeeProfile: React.FC<EmployeeProfileProps> = ({ employee }) =>
         </div>
       </div>
 
-      <div className="mt-8 pt-6 border-t border-gray-200">
-        <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase tracking-wide">Quick Actions</h4>
+      {/* Onboarding Progress */}
+      <div className="mt-6 pt-6 border-t border-gray-200">
+        <div className="flex items-center justify-between mb-3">
+          <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Onboarding Progress</h4>
+          <span className="text-lg font-bold text-blue-600">{employee.onboardingProgress}%</span>
+        </div>
         
-        <div className="space-y-2">
-          <button className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-3 group">
-            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-              <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <span className="font-medium">Update Profile</span>
-          </button>
-
-          <button className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-3 group">
-            <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-              <svg className="w-4 h-4 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1a1 1 0 011-1h2a1 1 0 011 1v1a1 1 0 01-1 1H5a1 1 0 01-1-1zm5 0v-1a1 1 0 011-1h2a1 1 0 011 1v1a1 1 0 01-1 1h-2a1 1 0 01-1-1z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <span className="font-medium">Change Password</span>
-          </button>
-
-          <button className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-3 group">
-            <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
-              <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <span className="font-medium">View Schedule</span>
-          </button>
-
-          <button className="w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors flex items-center gap-3 group">
-            <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-              <svg className="w-4 h-4 text-orange-600" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
-              </svg>
-            </div>
-            <span className="font-medium">Contact HR</span>
-          </button>
+        <div className="w-full bg-gray-200 rounded-full h-2 mb-2">
+          <div 
+            className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-500 ease-out"
+            style={{ width: `${employee.onboardingProgress}%` }}
+          ></div>
         </div>
-      </div>
-
-      <div className="mt-8 pt-6 border-t border-gray-200">
-        <div className="flex items-center justify-between">
-          <span className="text-sm font-semibold text-gray-500 uppercase tracking-wide">Status</span>
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 border border-green-200">
-            <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-            Active
-          </span>
-        </div>
+        
+        <p className="text-xs text-gray-500">
+          {employee.onboardingProgress >= 100 ? "Onboarding Complete!" : 
+           employee.onboardingProgress >= 75 ? "Almost there!" :
+           employee.onboardingProgress >= 50 ? "Halfway done!" :
+           "Getting started"}
+        </p>
       </div>
     </div>
   );
