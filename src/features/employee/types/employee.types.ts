@@ -68,7 +68,6 @@ export interface EmployeeDashboardData {
   };
 }
 
-// Component Props
 export interface EmployeeStatsProps {
   stats: EmployeeDashboardData['stats'];
   onboardingProgress: number;
