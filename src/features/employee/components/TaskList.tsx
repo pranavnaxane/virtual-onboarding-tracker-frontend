@@ -171,7 +171,6 @@ export const TaskList: React.FC<TaskListProps> = ({ tasks, onTaskComplete, onDoc
                   )}
                 </div>
 
-                {/* Required Documents */}
                 {task.requiredDocuments && task.requiredDocuments.length > 0 && (
                   <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
                     <h4 className="text-sm font-medium text-blue-900 mb-2">Required Documents:</h4>

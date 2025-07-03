@@ -2,11 +2,8 @@ import React, { useState, useEffect } from "react";
 import { EmployeeStats } from "./components/EmployeeStats";
 import { TaskList } from "./components/TaskList";
 import { DocumentUpload } from "./components/DocumentUpload";
-import { RecentActivity } from "./components/RecentActivity";
-import { EmployeeProfile } from "./components/EmployeeProfile";
 import type { 
   EmployeeDashboardData, 
-  OnboardingTask, 
   DocumentUpload as DocumentUploadType,
   Activity,
   UploadedDocument
@@ -19,7 +16,6 @@ const EmployeeDashboard: React.FC = () => {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        // Mock data for the refactored employee dashboard
         const mockData: EmployeeDashboardData = {
           employee: {
             id: "emp-001",
@@ -280,8 +276,6 @@ const EmployeeDashboard: React.FC = () => {
 
     const task = dashboardData.tasks.find(t => t.id === taskId);
     if (!task || !task.requiredDocuments) return;
-
-    // For simplicity, we'll upload the first required document type
     const documentType = task.requiredDocuments[0] as DocumentUploadType['type'];
     handleDocumentUpload(documentType, files);
   };

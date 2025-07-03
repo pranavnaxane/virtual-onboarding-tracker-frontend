@@ -7,7 +7,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({ stats, onboardingP
       <h2 className="text-xl font-bold text-gray-900 mb-6">Onboarding Overview</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Total Tasks */}
+  
         <div className="bg-blue-50 rounded-xl p-5 border border-blue-100">
           <div className="flex items-center justify-between mb-3">
             <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
@@ -23,7 +23,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({ stats, onboardingP
           </div>
         </div>
 
-        {/* Completed Tasks */}
+   
         <div className="bg-green-50 rounded-xl p-5 border border-green-100">
           <div className="flex items-center justify-between mb-3">
             <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
@@ -46,7 +46,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({ stats, onboardingP
           </div>
         </div>
 
-        {/* Pending Tasks */}
+   
         <div className="bg-orange-50 rounded-xl p-5 border border-orange-100">
           <div className="flex items-center justify-between mb-3">
             <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
@@ -62,7 +62,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({ stats, onboardingP
           </div>
         </div>
 
-        {/* Documents Status */}
+
         <div className="bg-purple-50 rounded-xl p-5 border border-purple-100">
           <div className="flex items-center justify-between mb-3">
             <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
@@ -96,7 +96,7 @@ export const EmployeeStats: React.FC<EmployeeStatsProps> = ({ stats, onboardingP
         </div>
       </div>
 
-      {/* Overall Progress */}
+
       <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-100">
         <div className="flex items-center justify-between mb-4">
           <div>

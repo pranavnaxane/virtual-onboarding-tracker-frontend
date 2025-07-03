@@ -111,8 +111,6 @@ export const DocumentUpload: React.FC<DocumentUploadProps> = ({
           {documents.filter(d => d.status === "uploaded" || d.status === "approved").length} / {documents.filter(d => d.required).length} required
         </div>
       </div>
-
-      {/* Required Documents */}
       <div className="mb-8">
         <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
           <span className="w-2 h-2 bg-red-500 rounded-full"></span>
@@ -219,8 +217,6 @@ export const DocumentUpload: React.FC<DocumentUploadProps> = ({
           ))}
         </div>
       </div>
-
-      {/* Optional Documents */}
       {optionalDocuments.length > 0 && (
         <div>
           <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
@@ -329,8 +325,6 @@ export const DocumentUpload: React.FC<DocumentUploadProps> = ({
           </div>
         </div>
       )}
-
-      {/* Upload Guidelines */}
       <div className="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
         <h4 className="font-semibold text-blue-900 mb-2">Upload Guidelines</h4>
         <ul className="text-sm text-blue-800 space-y-1">
