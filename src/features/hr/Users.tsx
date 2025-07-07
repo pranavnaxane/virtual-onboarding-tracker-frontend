@@ -25,6 +25,7 @@ export const UsersPage = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {filteredUsers
             .filter((user: any) => user.hrId === hrId)
+            .slice(0,3)
             .map((user: any) => (
               <div
                 key={user.userId}

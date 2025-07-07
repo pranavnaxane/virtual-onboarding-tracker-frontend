@@ -8,10 +8,14 @@ import type {
   Activity,
   UploadedDocument
 } from "./types/employee.types";
+import { useNavigate } from "react-router-dom";
 
 const EmployeeDashboard: React.FC = () => {
   const [dashboardData, setDashboardData] = useState<EmployeeDashboardData | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const navigate = useNavigate()
+  const userName = localStorage.getItem("userName")
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -326,6 +330,10 @@ const EmployeeDashboard: React.FC = () => {
       </div>
     );
   }
+  
+  const logout = () => {
+    navigate('/')
+  }
 
   return (
     <div className="min-h-screen bg-gray-25">
@@ -333,14 +341,16 @@ const EmployeeDashboard: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center py-6">
             <div>
-              <h1 className="text-3xl font-bold text-gray-1100 mb-1">Employee Dashboard</h1>
+              <h1 className="text-3xl font-bold text-gray-1100 mb-1">Welcome {userName}</h1>
               <p className="text-gray-700 text-lg">Track your onboarding progress and complete assigned tasks</p>
             </div>
             <div className="flex items-center space-x-3">
               <button className="bg-primary text-white px-6 py-2.5 rounded-lg hover:bg-primary-dark transition-all duration-200 font-medium shadow-sm">
                 View Profile
               </button>
-              <button className="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-200 transition-all duration-200 font-medium">
+              <button className="bg-gray-100 text-gray-700 px-6 py-2.5 rounded-lg hover:bg-gray-200 transition-all duration-200 font-medium"
+                onClick={logout}
+              >
                 Logout
               </button>
             </div>

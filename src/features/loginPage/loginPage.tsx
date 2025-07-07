@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 type AuthMode = "login" | "signup";
 
@@ -8,6 +10,7 @@ interface FormData {
 }
 
 const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
   const [mode, setMode] = useState<AuthMode>("login");
   const [formData, setFormData] = useState<FormData>({
     email: "",
@@ -19,40 +22,39 @@ const LoginPage: React.FC = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = async () => {
-    try {
-      if (
-        formData.email === "test@example.com" &&
-        formData.password === "password"
-      ) {
-        alert("Login successful!");
-      } else {
-        throw new Error("Invalid email or password");
-      }
-    } catch (err: any) {
-      setError(err.message || "Login failed");
-    }
-  };
-
-  const handleSignup = async () => {
-    try {
-      if (formData.email && formData.password.length >= 6) {
-        alert("Signup successful!");
-      } else {
-        throw new Error("Password must be at least 6 characters");
-      }
-    } catch (err: any) {
-      setError(err.message || "Signup failed");
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    if (mode === "login") {
-      handleLogin();
-    } else {
-      handleSignup();
+
+    const userName = formData.email.slice(0,4);
+    const capitalizedUserName = userName.charAt(0).toUpperCase() + userName.slice(1);
+
+
+    try {
+      const response = await axios.post("http://localhost:5001/api/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      });
+
+      const {message, user} = response.data;
+      
+      if(message === "Logged In Successfully!" && user.role === 'hr'){
+        navigate("/hr/dashboard/home");
+        
+      }
+      else {
+        localStorage.setItem("userName", capitalizedUserName);
+        navigate("/employee/dashboard/");
+      }      
+    } catch (err: any) {
+      console.error("Login error:", err);
+      if (err.response) {
+        setError(err.response.data.message || "Login failed. Please try again.");
+      } else if (err.request) {
+        setError("Network error. Please check your connection and try again.");
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
     }
   };
 
@@ -85,6 +87,7 @@ const LoginPage: React.FC = () => {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter your email"
           />
         </div>
 
@@ -102,6 +105,7 @@ const LoginPage: React.FC = () => {
             onChange={handleChange}
             required
             className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="Enter your password"
           />
         </div>
 
