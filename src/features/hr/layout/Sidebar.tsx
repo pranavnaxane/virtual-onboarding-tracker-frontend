@@ -20,6 +20,11 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
 
     setSelectedTab(menuItem);
   };
+
+  const logout = () => {
+    navigate("/")
+    setSelectedTab("Home")
+  }
   return (
     <>
       {isOpen && (
@@ -51,6 +56,7 @@ const Sidebar: FC<SidebarProps> = ({ isOpen = true, onClose }) => {
           <button
             type="button"
             className="w-full text-left px-3 py-2.5 xl:py-3 text-gray-600 rounded-md font-medium hover:bg-red-50 hover:text-red-600 transition-all duration-200 border border-black/10 hover:border-red-200 text-sm xl:text-base"
+            onClick={logout}
           >
             <div className="flex items-center gap-2">
               <svg
