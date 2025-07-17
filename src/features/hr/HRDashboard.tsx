@@ -6,6 +6,7 @@ import { useSidebar } from "../../context";
 import { Outlet } from "react-router-dom";
 
 const HRDashboard: FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { selectedTab } = useSidebar();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 

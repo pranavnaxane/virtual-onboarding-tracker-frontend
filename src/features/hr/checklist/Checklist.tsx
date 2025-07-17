@@ -1,26 +1,17 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import taskList, { type Task } from "../../mocks/dummy_tasklist";
+import taskList, { type Task } from "../../../mocks/dummy_tasklist";
+import "./Checklist.css"; // Import the CSS
 
-const statusColors = {
-  pending: "bg-yellow-100 text-yellow-700",
-  "in-progress": "bg-blue-100 text-blue-700",
-  completed: "bg-green-100 text-green-700",
-};
-
-const priorityColors = {
-  high: "text-red-600",
-  medium: "text-orange-500",
-  low: "text-gray-500",
-};
 const Checklist = () => {
   const { employeeId } = useParams<{ employeeId: string }>();
 
   if (!employeeId) return <p>Invalid employee</p>;
+
   const handleRemind = (taskId: string) => {
-    // You can trigger a toast, notification, or backend call here
+    // You can trigger a toast, notification, or backend call here 
     alert(`Reminder sent for task: ${taskId}`);
   };
+
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-semibold text-indigo-700">
@@ -40,9 +31,7 @@ const Checklist = () => {
                 {task.title}
               </h3>
               <span
-                className={`px-2 py-1 text-xs rounded-full font-semibold ${
-                  statusColors[task.status]
-                }`}
+                className={`px-2 py-1 text-xs rounded-full font-semibold status-${task.status}`}
               >
                 {task.status}
               </span>
@@ -51,11 +40,7 @@ const Checklist = () => {
             <p className="text-sm text-gray-400">
               Due: {new Date(task.dueDate).toLocaleDateString()}
             </p>
-            <p
-              className={`text-sm font-semibold ${
-                priorityColors[task.priority]
-              }`}
-            >
+            <p className={`text-sm font-semibold priority-${task.priority}`}>
               Priority: {task.priority}
             </p>
             <p className="text-xs text-gray-400">
@@ -76,4 +61,5 @@ const Checklist = () => {
     </div>
   );
 };
+
 export default Checklist;
