@@ -1,5 +1,5 @@
 import { memo, type FC } from "react";
-import { useSidebar } from "../../../context";
+import { useSidebar } from "../../../context/useSidebar";
 import type { SidebarLinkProps } from "../types/hr.types";
 import { useNavigate } from "react-router-dom";
 

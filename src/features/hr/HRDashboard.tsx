@@ -2,7 +2,7 @@ import { type FC, useState } from "react";
 import Header from "./layout/Header";
 import Sidebar from "./layout/Sidebar";
 import type { HRProfileData } from "./types/hr.types";
-import { useSidebar } from "../../context";
+import { useSidebar } from "../../context/useSidebar";
 import { Outlet } from "react-router-dom";
 
 const HRDashboard: FC = () => {
