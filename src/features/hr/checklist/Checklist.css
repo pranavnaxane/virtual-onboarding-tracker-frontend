@@ -1,0 +1,28 @@
+/* Status styles */
+.status-pending {
+  background-color: #fef3c7; 
+  color: #b45309;           
+}
+
+.status-in-progress {
+  background-color: #dbeafe; 
+  color: #1d4ed8;            
+}
+
+.status-completed {
+  background-color: #d1fae5; 
+  color: #047857;            
+}
+
+/* Priority styles */
+.priority-high {
+  color: #dc2626; 
+}
+
+.priority-medium {
+  color: #f97316; 
+}
+
+.priority-low {
+  color: #6b7280; 
+}

@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "../features/loginPage/loginPage";
 import { HRDashboard, HRProfile, UsersPage } from "../features/hr";
-import Checklist from "../features/hr/Checklist";
+import Checklist from "../features/hr/checklist/Checklist";
 import HomePage from "../features/hr/Home";
 import {EmployeeDashboard} from "../features/employee/";
 

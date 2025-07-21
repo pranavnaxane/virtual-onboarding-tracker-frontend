@@ -91,7 +91,7 @@ export const OnboardingProgress: React.FC<OnboardingProgressProps> = ({
 
       <div className="space-y-5">
         <h3 className="font-semibold text-gray-900 mb-4 text-lg">Onboarding Checklist</h3>
-        {onboardingSteps.map((step, index) => (
+        {onboardingSteps.map((step) => (
           <div key={step.id} className="flex items-start gap-4">
             <div className="flex-shrink-0 mt-1">
               {step.completed ? (

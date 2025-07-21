@@ -92,3 +92,8 @@ export interface RecentActivityProps {
 export interface EmployeeProfileProps {
   employee: Employee;
 }
+
+export interface OnboardingProgressProps {
+  progress: number;
+  employee: Employee;
+}
