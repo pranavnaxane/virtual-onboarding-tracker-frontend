@@ -14,13 +14,20 @@ export const UsersPage = () => {
   );
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
-      <input
-        type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search for the employee"
-        className="max-w-7xl w-full max-w-md px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 ease-in-out  mb-10"
-      />
+      <div className="flex justify-between">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search for the employee"
+          className="max-w-7xl w-full max-w-md px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-700 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 ease-in-out  mb-10"
+        />
+        <button className="max-w-7xl w-full max-w-md rounded-xl border border-gray-300 bg-indigo-600 text-white shadow-sm hover:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition duration-300 ease-in-out  mb-10"
+          onClick={() => navigate('/hr/dashboard/users/newuser')}
+        >
+          Create user
+        </button>
+      </div>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {filteredUsers

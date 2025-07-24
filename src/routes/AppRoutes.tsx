@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "../features/loginPage/loginPage";
 import { HRDashboard, HRProfile, UsersPage } from "../features/hr";
+import AddUser from "../features/hr/AddUser";
 import Checklist from "../features/hr/checklist/Checklist";
 import HomePage from "../features/hr/Home";
 import {EmployeeDashboard} from "../features/employee/";
@@ -31,6 +32,8 @@ const AppRoutes = () => {
         <Route path="users" element={<UsersPage />} />
         <Route path="checklist/:employeeId" element={<Checklist />} />
       </Route>
+
+      <Route path="/hr/dashboard/users/newuser" element={<AddUser />}/>
 
       <Route path="/employee/dashboard" element={<EmployeeDashboard />}/>
 
