@@ -38,14 +38,16 @@ const LoginPage: React.FC = () => {
 
       const {message, user} = response.data;
       
-      if(message === "Logged In Successfully!" && user.role === 'hr'){
-        navigate("/hr/dashboard/home");
-        
-      }
-      else {
-        localStorage.setItem("userName", capitalizedUserName);
-        navigate("/employee/dashboard/");
-      }      
+  if (message === "Logged In Successfully!") {
+  localStorage.setItem("token", user.token);  // Save token
+  localStorage.setItem("userName", capitalizedUserName);
+
+  if (user.role === "hr") {
+    navigate("/hr/dashboard/home");
+  } else {
+    navigate("/employee/dashboard/");
+  }
+}     
     } catch (err: any) {
       console.error("Login error:", err);
       if (err.response) {
@@ -136,3 +138,4 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
+
