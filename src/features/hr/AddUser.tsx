@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSidebar } from "../../context/useSidebar"
+import { useSidebar } from "../../context/useSidebar";
 
 interface UserData {
   name: string;
@@ -13,7 +13,7 @@ const AddUser: React.FC = () => {
   const handleUserCreate = (userData: UserData) => {
     console.log("user data submitted:", userData);
     alert(
-      `user "${userData.name}" with role "${userData.role}" created successfully!`
+      `User "${userData.name}" with role "${userData.role}" created successfully!`
     );
   };
 
@@ -44,35 +44,64 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({ onCreateUser }) => {
     {}
   );
 
+  const { setSelectedTab } = useSidebar();
+  const navigate = useNavigate();
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: value.toLowerCase() === "hr" ? "hr" : value.toLowerCase(),
     }));
   };
 
-  const addUser = () => {
-    console.log(formData);
-  };
+const addUser = async () => {
+  try {
+    const token = localStorage.getItem("token");
+    console.log("Using token:", token);
+    console.log("Form Data:", formData);
+
+    const response = await fetch("http://localhost:5001/api/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await response.json();
+    console.log("Response:", result);
+
+    if (response.ok) {
+      alert("User created successfully!");
+      onCreateUser(formData);
+    } else {
+      alert("Failed to create user: " + result.message);
+    }
+  } catch (error) {
+    console.error("Error creating user:", error);
+    alert("An error occurred while creating the user.");
+  }
+};
+
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    addUser();
   };
 
-  const { setSelectedTab, selectedTab } = useSidebar();
-  const navigate = useNavigate();
   const goToHome = () => {
-    navigate("/hr/dashboard/home")
-    setSelectedTab("Home")
-  }
+    navigate("/hr/dashboard/home");
+    setSelectedTab("Home");
+  };
 
   return (
     <div className="bg-gray-50 p-8 rounded-xl shadow-2xl border border-gray-300">
       <h2 className="text-2xl font-bold mb-6 text-center text-indigo-600">
-        Create New user
+        Create New User
       </h2>
       <form onSubmit={handleSubmit} noValidate className="space-y-4">
         <div>
@@ -152,14 +181,13 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({ onCreateUser }) => {
             onChange={handleChange}
             className="w-full px-4 py-3 border border-gray-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-gray-300"
           >
-            <option>Hr</option>
-            <option>User</option>
+            <option value="hr">Hr</option>
+            <option value="user">User</option>
           </select>
         </div>
 
         <div className="flex">
           <button
-            onClick={addUser}
             type="submit"
             className="m-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-gray-300 mt-6"
           >
@@ -168,7 +196,7 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({ onCreateUser }) => {
 
           <button
             onClick={goToHome}
-            type="submit"
+            type="button"
             className="m-2 bg-transparent border border-black text-black font-bold py-3 px-4 rounded-lg transition-transform duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-gray-300 mt-6"
           >
             Cancel
@@ -180,3 +208,4 @@ const CreateUserForm: React.FC<CreateUserFormProps> = ({ onCreateUser }) => {
 };
 
 export default AddUser;
+
