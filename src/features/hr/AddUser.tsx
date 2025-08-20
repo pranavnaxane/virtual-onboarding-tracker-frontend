@@ -119,6 +119,7 @@ const addUser = async () => {
             onChange={handleChange}
             placeholder="Name"
             className="w-full px-4 py-3 border border-gray-600 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300"
+            style={{textTransform:"capitalize"}}
           />
           {errors.name && (
             <p className="text-red-500 text-xs mt-1">{errors.name}</p>
